@@ -1,0 +1,1163 @@
+Loaded 24000 characters (~6000 tokens) from bible.txt
+
+=== Benchmark Configuration ===
+Maximum timeout in seconds (default: 30): 
+Using timeout: 30 seconds
+
+For each model, specify how many times to run each question.
+Enter 0 to skip a model completely.
+Number of iterations for anthropic [eu.anthropic.claude-3-7-sonnet-20250219-v1:0] (default: 1): 3
+Number of iterations for amazon [eu.amazon.nova-lite-v1:0] (default: 1): 3
+Number of iterations for titan-embed-text-v2:0 [amazon.titan-embed-text-v2:0] (default: 1): 3
+Number of iterations for rerank-v3-5:0 [cohere.rerank-v3-5:0] (default: 1): 10
+
+=== Benchmark started ===
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 1/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 2.92s, Tokens/min: 125385.00, Success: True
+  Tokens sent: 6020, Tokens received: 77
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 1/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 2.86s, Tokens/min: 127679.33, Success: True
+  Tokens sent: 6020, Tokens received: 75
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 1/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 3.68s, Tokens/min: 99588.65, Success: True
+  Tokens sent: 6020, Tokens received: 89
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 2/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 3.84s, Tokens/min: 95861.45, Success: True
+  Tokens sent: 6023, Tokens received: 110
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 2/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 5.17s, Tokens/min: 71347.48, Success: True
+  Tokens sent: 6023, Tokens received: 127
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 2/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 3.36s, Tokens/min: 109520.74, Success: True
+  Tokens sent: 6023, Tokens received: 109
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 3/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 2.60s, Tokens/min: 140888.88, Success: True
+  Tokens sent: 6027, Tokens received: 71
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 3/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 3.22s, Tokens/min: 113734.63, Success: True
+  Tokens sent: 6027, Tokens received: 80
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 3/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 4.10s, Tokens/min: 89131.68, Success: True
+  Tokens sent: 6027, Tokens received: 61
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 4/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 15.79s, Tokens/min: 24823.58, Success: True
+  Tokens sent: 6027, Tokens received: 507
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 4/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 17.33s, Tokens/min: 22533.60, Success: True
+  Tokens sent: 6027, Tokens received: 483
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 4/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 16.03s, Tokens/min: 24428.16, Success: True
+  Tokens sent: 6027, Tokens received: 500
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 5/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 9.36s, Tokens/min: 40809.91, Success: True
+  Tokens sent: 6023, Tokens received: 341
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 5/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 7.65s, Tokens/min: 49696.69, Success: True
+  Tokens sent: 6023, Tokens received: 315
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 5/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 8.56s, Tokens/min: 44498.85, Success: True
+  Tokens sent: 6023, Tokens received: 322
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 6/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 14.69s, Tokens/min: 26319.43, Success: True
+  Tokens sent: 6020, Tokens received: 422
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 6/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 15.18s, Tokens/min: 25386.03, Success: True
+  Tokens sent: 6020, Tokens received: 402
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 6/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24080 characters (~6020 tokens)
+ERROR: Failed to invoke eu.anthropic.claude-3-7-sonnet-20250219-v1:0: Read timeout on endpoint URL: "https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-3-7-sonnet-20250219-v1%3A0/invoke"
+WARNING: Request reached timeout limit of 30s
+  Duration: 30.04s, Tokens/min: 12025.31, Success: False
+  Tokens sent: 6020, Tokens received: 0
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 7/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24106 characters (~6026 tokens)
+ERROR: Failed to invoke eu.anthropic.claude-3-7-sonnet-20250219-v1:0: Read timeout on endpoint URL: "https://bedrock-runtime.eu-central-1.amazonaws.com/model/eu.anthropic.claude-3-7-sonnet-20250219-v1%3A0/invoke"
+WARNING: Request reached timeout limit of 30s
+  Duration: 30.21s, Tokens/min: 11968.70, Success: False
+  Tokens sent: 6026, Tokens received: 0
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 7/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 26.62s, Tokens/min: 14507.83, Success: True
+  Tokens sent: 6026, Tokens received: 411
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 7/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 13.14s, Tokens/min: 29409.70, Success: True
+  Tokens sent: 6026, Tokens received: 414
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 8/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 6.68s, Tokens/min: 55177.98, Success: True
+  Tokens sent: 6019, Tokens received: 125
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 8/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 5.22s, Tokens/min: 70840.03, Success: True
+  Tokens sent: 6019, Tokens received: 145
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 8/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 5.71s, Tokens/min: 64773.20, Success: True
+  Tokens sent: 6019, Tokens received: 143
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 9/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 13.78s, Tokens/min: 28300.04, Success: True
+  Tokens sent: 6027, Tokens received: 471
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 9/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 12.96s, Tokens/min: 30247.62, Success: True
+  Tokens sent: 6027, Tokens received: 504
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 9/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 17.84s, Tokens/min: 22108.37, Success: True
+  Tokens sent: 6027, Tokens received: 548
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 10/10 - Iteration 1/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 16.59s, Tokens/min: 23706.36, Success: True
+  Tokens sent: 6019, Tokens received: 537
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 10/10 - Iteration 2/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 15.70s, Tokens/min: 25004.39, Success: True
+  Tokens sent: 6019, Tokens received: 525
+
+Running eu.anthropic.claude-3-7-sonnet-20250219-v1:0 - Question 10/10 - Iteration 3/3
+Sending request to eu.anthropic.claude-3-7-sonnet-20250219-v1:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 17.88s, Tokens/min: 22121.67, Success: True
+  Tokens sent: 6019, Tokens received: 574
+
+Running eu.amazon.nova-lite-v1:0 - Question 1/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 1.13s, Tokens/min: 319391.32, Success: True
+  Tokens sent: 6020, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 1/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1207628.00, Success: True
+  Tokens sent: 6020, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 1/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.87s, Tokens/min: 414266.18, Success: True
+  Tokens sent: 6020, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 2/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.51s, Tokens/min: 715320.12, Success: True
+  Tokens sent: 6023, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 2/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.35s, Tokens/min: 1030490.10, Success: True
+  Tokens sent: 6023, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 2/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.97s, Tokens/min: 374043.50, Success: True
+  Tokens sent: 6023, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 3/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.80s, Tokens/min: 451627.43, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 3/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.94s, Tokens/min: 384803.71, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 3/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.46s, Tokens/min: 788687.27, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 4/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 2.05s, Tokens/min: 176353.53, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 4/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 2.26s, Tokens/min: 160235.35, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 4/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 1.69s, Tokens/min: 214380.90, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 5/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 2.42s, Tokens/min: 149472.98, Success: True
+  Tokens sent: 6023, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 5/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 1.59s, Tokens/min: 227038.02, Success: True
+  Tokens sent: 6023, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 5/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 3.28s, Tokens/min: 110124.96, Success: True
+  Tokens sent: 6023, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 6/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 6.73s, Tokens/min: 53631.89, Success: True
+  Tokens sent: 6020, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 6/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 2.76s, Tokens/min: 130728.71, Success: True
+  Tokens sent: 6020, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 6/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 2.36s, Tokens/min: 152760.92, Success: True
+  Tokens sent: 6020, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 7/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.87s, Tokens/min: 414293.55, Success: True
+  Tokens sent: 6026, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 7/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.59s, Tokens/min: 608843.17, Success: True
+  Tokens sent: 6026, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 7/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.88s, Tokens/min: 409104.79, Success: True
+  Tokens sent: 6026, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 8/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.47s, Tokens/min: 762751.26, Success: True
+  Tokens sent: 6019, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 8/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.32s, Tokens/min: 1128313.90, Success: True
+  Tokens sent: 6019, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 8/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.31s, Tokens/min: 1154132.60, Success: True
+  Tokens sent: 6019, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 9/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 3.13s, Tokens/min: 115667.55, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 9/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 2.85s, Tokens/min: 126765.11, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 9/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 3.61s, Tokens/min: 100132.05, Success: True
+  Tokens sent: 6027, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 10/10 - Iteration 1/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 5.91s, Tokens/min: 61105.85, Success: True
+  Tokens sent: 6019, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 10/10 - Iteration 2/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 6.17s, Tokens/min: 58509.05, Success: True
+  Tokens sent: 6019, Tokens received: 0
+
+Running eu.amazon.nova-lite-v1:0 - Question 10/10 - Iteration 3/3
+Sending request to eu.amazon.nova-lite-v1:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 6.51s, Tokens/min: 55469.46, Success: True
+  Tokens sent: 6019, Tokens received: 0
+
+Running amazon.titan-embed-text-v2:0 - Question 1/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.28s, Tokens/min: 1289606.56, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 1/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.26s, Tokens/min: 1410649.52, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 1/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.26s, Tokens/min: 1416958.96, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 2/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.26s, Tokens/min: 1382746.38, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 2/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.27s, Tokens/min: 1327172.27, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 2/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.26s, Tokens/min: 1400566.32, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 3/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.26s, Tokens/min: 1407713.00, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 3/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.27s, Tokens/min: 1322244.85, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 3/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.29s, Tokens/min: 1266533.50, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 4/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.31s, Tokens/min: 1155113.53, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 4/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.34s, Tokens/min: 1067620.70, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 4/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.33s, Tokens/min: 1112124.55, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 5/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.26s, Tokens/min: 1416577.58, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 5/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.26s, Tokens/min: 1403534.25, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 5/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.26s, Tokens/min: 1378368.57, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 6/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.26s, Tokens/min: 1404157.50, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 6/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.29s, Tokens/min: 1253393.74, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 6/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.26s, Tokens/min: 1392999.68, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 7/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.29s, Tokens/min: 1265318.31, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 7/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.32s, Tokens/min: 1123180.11, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 7/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.27s, Tokens/min: 1356533.99, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 8/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.26s, Tokens/min: 1388451.65, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 8/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.26s, Tokens/min: 1375933.02, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 8/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.27s, Tokens/min: 1356639.72, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 9/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.26s, Tokens/min: 1375564.18, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 9/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.27s, Tokens/min: 1368040.76, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 9/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.25s, Tokens/min: 1431002.19, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 10/10 - Iteration 1/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.26s, Tokens/min: 1387036.10, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 10/10 - Iteration 2/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.27s, Tokens/min: 1336384.81, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running amazon.titan-embed-text-v2:0 - Question 10/10 - Iteration 3/3
+Sending request to amazon.titan-embed-text-v2:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.26s, Tokens/min: 1375376.87, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.32s, Tokens/min: 1119677.20, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1227199.11, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1225383.22, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1219805.28, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1226487.73, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.68s, Tokens/min: 535242.43, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.32s, Tokens/min: 1127964.22, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.32s, Tokens/min: 1128207.65, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1197784.74, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 1/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24081 characters (~6020 tokens)
+  Duration: 0.29s, Tokens/min: 1241241.33, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.31s, Tokens/min: 1161498.68, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1211572.15, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1218306.45, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.31s, Tokens/min: 1161126.53, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1227917.10, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1201908.99, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1197014.47, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1199627.85, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1217542.38, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 2/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24093 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1190625.56, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.32s, Tokens/min: 1127207.68, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1213758.96, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1230560.88, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.37s, Tokens/min: 989427.52, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.42s, Tokens/min: 873030.45, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.47s, Tokens/min: 773323.00, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1194551.83, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1223927.40, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1230739.87, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 3/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1214403.52, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.37s, Tokens/min: 985557.79, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1216763.03, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.50s, Tokens/min: 732721.16, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1212065.67, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.31s, Tokens/min: 1168439.87, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1195965.43, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1206313.29, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.31s, Tokens/min: 1174871.81, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.31s, Tokens/min: 1165462.46, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 4/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24108 characters (~6027 tokens)
+  Duration: 0.31s, Tokens/min: 1168692.71, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.31s, Tokens/min: 1168391.87, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1215182.17, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.29s, Tokens/min: 1242028.59, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.32s, Tokens/min: 1133876.90, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.50s, Tokens/min: 723033.91, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1215750.97, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1221811.60, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.35s, Tokens/min: 1027398.37, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.31s, Tokens/min: 1183404.84, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 5/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24094 characters (~6023 tokens)
+  Duration: 0.30s, Tokens/min: 1212754.75, Success: True
+  Tokens sent: 6023, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.29s, Tokens/min: 1230648.93, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1225638.92, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.31s, Tokens/min: 1158284.94, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1200861.42, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.29s, Tokens/min: 1236669.43, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1223730.18, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.31s, Tokens/min: 1186891.20, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.31s, Tokens/min: 1182895.09, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.29s, Tokens/min: 1246279.91, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 6/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24080 characters (~6020 tokens)
+  Duration: 0.30s, Tokens/min: 1229405.76, Success: True
+  Tokens sent: 6020, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.50s, Tokens/min: 723365.41, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.29s, Tokens/min: 1253999.29, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.31s, Tokens/min: 1173754.13, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.31s, Tokens/min: 1180195.64, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.39s, Tokens/min: 937212.05, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.30s, Tokens/min: 1216799.17, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.29s, Tokens/min: 1244660.82, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.51s, Tokens/min: 711592.95, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.30s, Tokens/min: 1217678.77, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 7/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24106 characters (~6026 tokens)
+  Duration: 0.30s, Tokens/min: 1219638.09, Success: True
+  Tokens sent: 6026, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1222685.84, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1197516.82, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.29s, Tokens/min: 1251528.31, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1198832.56, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1224069.31, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1215287.63, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1215960.91, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.47s, Tokens/min: 765773.21, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1206911.59, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 8/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24077 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1226846.66, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1222319.42, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1211732.02, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.31s, Tokens/min: 1187577.18, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.29s, Tokens/min: 1239732.09, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.29s, Tokens/min: 1249600.57, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1223122.39, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1209474.55, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1221409.75, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.30s, Tokens/min: 1220055.60, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 9/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24111 characters (~6027 tokens)
+  Duration: 0.29s, Tokens/min: 1231228.39, Success: True
+  Tokens sent: 6027, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 1/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1198830.67, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 2/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.29s, Tokens/min: 1229798.69, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 3/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.31s, Tokens/min: 1171662.97, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 4/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.29s, Tokens/min: 1238167.90, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 5/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1225353.24, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 6/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.29s, Tokens/min: 1233018.80, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 7/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1219329.74, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 8/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1207082.08, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 9/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1221591.90, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Running cohere.rerank-v3-5:0 - Question 10/10 - Iteration 10/10
+Sending request to cohere.rerank-v3-5:0...
+Prompt length: 24078 characters (~6019 tokens)
+  Duration: 0.30s, Tokens/min: 1217296.08, Success: True
+  Tokens sent: 6019, Tokens received: 25
+
+Benchmark complete. Results saved to results/benchmark_20250717_141338.csv
+Run 'python generate_graph.py' to create visualization of the results.
+
+
