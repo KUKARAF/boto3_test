@@ -3,6 +3,10 @@ import time
 import json
 import csv
 import os
+import sys
+import select
+import tty
+import termios
 from datetime import datetime
 import logging
 
@@ -137,6 +141,26 @@ def invoke_model(model_id, prompt):
         "output_tokens": count_tokens(response_text) if response_text else 0
     }
 
+# Function to check if 'p' key was pressed
+def is_p_pressed():
+    # Store the terminal settings
+    old_settings = termios.tcgetattr(sys.stdin)
+    try:
+        # Set the terminal to raw mode
+        tty.setraw(sys.stdin.fileno())
+        # Check if there's input ready (non-blocking)
+        if select.select([sys.stdin], [], [], 0)[0]:
+            key = sys.stdin.read(1)
+            # Restore terminal settings
+            termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
+            return key == 'p'
+    except Exception as e:
+        print(f"Error checking for keypress: {e}")
+    finally:
+        # Restore terminal settings
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
+    return False
+
 # Main benchmark function
 def run_benchmark():
     questions = load_questions()
@@ -147,6 +171,9 @@ def run_benchmark():
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     csv_file = f"results/benchmark_{timestamp}.csv"
+    
+    print("\n=== Benchmark started ===")
+    print("Press 'p' at any time to add more test iterations")
     
     # Write CSV header
     with open(csv_file, 'w', newline='') as f:
@@ -201,6 +228,57 @@ def run_benchmark():
             
             # Small delay between requests
             time.sleep(1)
+            
+            # Check if 'p' was pressed to add more iterations
+            if is_p_pressed():
+                print("\n=== Adding more test iterations ===")
+                print(f"Current model: {model_id}, Current question: {i+1}")
+                print("How many more iterations of this question do you want to run?")
+                try:
+                    more_iterations = int(input("Enter number (default: 1): ") or "1")
+                    for j in range(more_iterations):
+                        print(f"\nRunning additional iteration {j+1}/{more_iterations}...")
+                        
+                        # Run the same question again
+                        result = invoke_model(model_id, question)
+                        success = result["error"] is None
+                        
+                        # Calculate total tokens and tokens per minute
+                        total_tokens = result["input_tokens"] + result["output_tokens"]
+                        tokens_per_minute = (total_tokens / result["duration"]) * 60 if result["duration"] > 0 else 0
+                        
+                        # Log result
+                        logger.info(f"    Additional run {j+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
+                        print(f"  Additional run {j+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
+                        print(f"    Tokens sent: {result['input_tokens']}, Tokens received: {result['output_tokens']}")
+                        
+                        # Save to results list
+                        result_row = {
+                            "model_id": model_id,
+                            "question_id": i+1,
+                            "duration": result["duration"],
+                            "input_tokens": result["input_tokens"],
+                            "output_tokens": result["output_tokens"],
+                            "total_tokens": total_tokens,
+                            "tokens_per_minute": tokens_per_minute,
+                            "success": success
+                        }
+                        model_results.append(result_row)
+                        
+                        # Write to CSV
+                        with open(csv_file, 'a', newline='') as f:
+                            writer = csv.writer(f)
+                            writer.writerow([
+                                model_id, i+1, result["duration"], result["input_tokens"],
+                                result["output_tokens"], total_tokens, tokens_per_minute, success
+                            ])
+                        
+                        # Small delay between requests
+                        time.sleep(1)
+                    
+                    print("Additional iterations completed.")
+                except ValueError:
+                    print("Invalid input. Continuing with regular benchmark.")
         
         results.extend(model_results)
     
@@ -208,6 +286,10 @@ def run_benchmark():
     return csv_file, results
 
 if __name__ == "__main__":
-    csv_file, results = run_benchmark()
-    print(f"Benchmark complete. Results saved to {csv_file}")
-    print("Run 'python generate_graph.py' to create visualization of the results.")
+    try:
+        csv_file, results = run_benchmark()
+        print(f"\nBenchmark complete. Results saved to {csv_file}")
+        print("Run 'python generate_graph.py' to create visualization of the results.")
+    except KeyboardInterrupt:
+        print("\nBenchmark interrupted by user. Partial results may have been saved.")
+        print("Run 'python generate_graph.py' to create visualization of any saved results.")
