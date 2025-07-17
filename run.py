@@ -65,6 +65,7 @@ def invoke_model(model_id, prompt):
     response_text = ""
     
     print(f"Sending request to {model_id}...")
+    print(f"Prompt length: {len(prompt)} characters (~{len(prompt)//4} tokens)")
     
     try:
         if "claude" in model_id:
@@ -86,8 +87,8 @@ def invoke_model(model_id, prompt):
             body = json.dumps({
                 "messages": [
                     {"role": "user", "content": prompt}
-                ],
-                "max_tokens": 1000
+                ]
+                # Nova doesn't accept max_tokens parameter
             })
             response = bedrock_runtime.invoke_model(
                 modelId=model_id,
@@ -190,6 +191,7 @@ def run_benchmark():
                 "duration": result["duration"],
                 "input_tokens": result["input_tokens"],
                 "output_tokens": result["output_tokens"],
+                "total_tokens": total_tokens,
                 "tokens_per_minute": tokens_per_minute,
                 "success": success
             }
