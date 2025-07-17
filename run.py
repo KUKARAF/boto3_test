@@ -38,13 +38,9 @@ def load_questions():
         questions = [line.strip() for line in f if line.strip()]
     
     # Load bible text to add to each request (approximately 6k tokens)
-    try:
-        with open('bible.txt', 'r') as f:
-            bible_text = f.read(24000)  # ~6k tokens (4 chars per token)
-            print(f"Loaded {len(bible_text)} characters (~{len(bible_text)//4} tokens) from bible.txt")
-    except FileNotFoundError:
-        print("WARNING: bible.txt not found. Using empty padding text.")
-        bible_text = ""
+    with open('bible.txt', 'r') as f:
+        bible_text = f.read(24000)  # ~6k tokens (4 chars per token)
+        print(f"Loaded {len(bible_text)} characters (~{len(bible_text)//4} tokens) from bible.txt")
     
     # Add bible text to each question
     padded_questions = []
@@ -180,9 +176,7 @@ def run_benchmark():
             print(f"  Question {i+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
             print(f"    Tokens sent: {result['input_tokens']}, Tokens received: {result['output_tokens']}")
             
-            # Print error details if the request failed
-            if not success:
-                print(f"    ERROR: {result['error']}")
+            # Error details are already printed in invoke_model function
             
             # Save to results list
             result_row = {
