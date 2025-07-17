@@ -111,6 +111,7 @@ def invoke_model(model_id, prompt):
     except Exception as e:
         error = str(e)
         logger.error(f"Error invoking {model_id}: {error}")
+        print(f"ERROR: Failed to invoke {model_id}: {error}")
     
     end_time = time.time()
     duration = end_time - start_time
@@ -161,6 +162,10 @@ def run_benchmark():
             logger.info(f"    Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
             print(f"  Question {i+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
             print(f"    Tokens sent: {result['input_tokens']}, Tokens received: {result['output_tokens']}")
+            
+            # Print error details if the request failed
+            if not success:
+                print(f"    ERROR: {result['error']}")
             
             # Save to results list
             result_row = {
