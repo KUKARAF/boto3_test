@@ -33,7 +33,7 @@ def initialize_bedrock_client(timeout=30):
 
 # Models to test
 MODELS = [
-    "anthropic.claude-3-5-sonnet-20240620-v1:0",
+    "eu.anthropic.claude-3-7-sonnet-20250219-v1:0",
     "eu.amazon.nova-lite-v1:0",
     "amazon.titan-embed-text-v2:0",
     "cohere.rerank-v3-5:0"
