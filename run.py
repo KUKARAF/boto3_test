@@ -29,6 +29,9 @@ bedrock_runtime = boto3.client(
     )
 )
 
+# Global variable to track if 'p' was pressed during a request
+p_pressed_during_request = False
+
 # Models to test
 MODELS = [
     "anthropic.claude-3-5-sonnet-20240620-v1:0",
@@ -67,6 +70,7 @@ def invoke_model(model_id, prompt):
     
     print(f"Sending request to {model_id}...")
     print(f"Prompt length: {len(prompt)} characters (~{len(prompt)//4} tokens)")
+    print("Waiting for response (press 'n' to skip, 'p' to add iterations)...")
     
     try:
         if "claude" in model_id:
@@ -77,12 +81,37 @@ def invoke_model(model_id, prompt):
                     {"role": "user", "content": prompt}
                 ]
             })
-            response = bedrock_runtime.invoke_model(
+            # Set up a non-blocking request with timeout checking
+            future = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            response_body = json.loads(response['body'].read().decode('utf-8'))
-            response_text = response_body['content'][0]['text']
+            
+            # Check for key presses while waiting for response
+            start_wait = time.time()
+            while True:
+                # Check if response is ready
+                try:
+                    response = future
+                    response_body = json.loads(response['body'].read().decode('utf-8'))
+                    response_text = response_body['content'][0]['text']
+                    break
+                except Exception as e:
+                    # Not ready yet, check for key press
+                    key_pressed = check_key_press()
+                    if key_pressed == 'n':
+                        print("\n=== Skipping this request ===")
+                        raise KeyboardInterrupt("User requested to skip")
+                    elif key_pressed == 'p':
+                        # We'll handle 'p' after the request completes
+                        pass
+                    
+                    # Check if we've exceeded our timeout
+                    if time.time() - start_wait > 30:
+                        raise TimeoutError("Request timed out after 30 seconds")
+                    
+                    # Small sleep to prevent CPU spinning
+                    time.sleep(0.1)
             
         elif "nova" in model_id:
             body = json.dumps({
@@ -91,23 +120,73 @@ def invoke_model(model_id, prompt):
                 ]
                 # Nova doesn't accept max_tokens parameter
             })
-            response = bedrock_runtime.invoke_model(
+            # Set up a non-blocking request with timeout checking
+            future = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            response_body = json.loads(response['body'].read().decode('utf-8'))
-            response_text = response_body['output']
+            
+            # Check for key presses while waiting for response
+            start_wait = time.time()
+            while True:
+                # Check if response is ready
+                try:
+                    response = future
+                    response_body = json.loads(response['body'].read().decode('utf-8'))
+                    response_text = response_body['output']
+                    break
+                except Exception as e:
+                    # Not ready yet, check for key press
+                    key_pressed = check_key_press()
+                    if key_pressed == 'n':
+                        print("\n=== Skipping this request ===")
+                        raise KeyboardInterrupt("User requested to skip")
+                    elif key_pressed == 'p':
+                        # We'll handle 'p' after the request completes
+                        pass
+                    
+                    # Check if we've exceeded our timeout
+                    if time.time() - start_wait > 30:
+                        raise TimeoutError("Request timed out after 30 seconds")
+                    
+                    # Small sleep to prevent CPU spinning
+                    time.sleep(0.1)
             
         elif "titan-embed" in model_id:
             body = json.dumps({
                 "inputText": prompt
             })
-            response = bedrock_runtime.invoke_model(
+            # Set up a non-blocking request with timeout checking
+            future = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            response_body = json.loads(response['body'].read().decode('utf-8'))
-            response_text = str(response_body['embedding'])[:100] + "..."  # Just show part of embedding
+            
+            # Check for key presses while waiting for response
+            start_wait = time.time()
+            while True:
+                # Check if response is ready
+                try:
+                    response = future
+                    response_body = json.loads(response['body'].read().decode('utf-8'))
+                    response_text = str(response_body['embedding'])[:100] + "..."  # Just show part of embedding
+                    break
+                except Exception as e:
+                    # Not ready yet, check for key press
+                    key_pressed = check_key_press()
+                    if key_pressed == 'n':
+                        print("\n=== Skipping this request ===")
+                        raise KeyboardInterrupt("User requested to skip")
+                    elif key_pressed == 'p':
+                        # We'll handle 'p' after the request completes
+                        pass
+                    
+                    # Check if we've exceeded our timeout
+                    if time.time() - start_wait > 30:
+                        raise TimeoutError("Request timed out after 30 seconds")
+                    
+                    # Small sleep to prevent CPU spinning
+                    time.sleep(0.1)
             
         elif "rerank" in model_id:
             # Get random chunks from bible.txt for documents
@@ -128,13 +207,42 @@ def invoke_model(model_id, prompt):
                 "query": prompt,
                 "top_n": 3
             })
-            response = bedrock_runtime.invoke_model(
+            # Set up a non-blocking request with timeout checking
+            future = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            response_body = json.loads(response['body'].read().decode('utf-8'))
-            response_text = str(response_body['results'])[:100] + "..."
+            
+            # Check for key presses while waiting for response
+            start_wait = time.time()
+            while True:
+                # Check if response is ready
+                try:
+                    response = future
+                    response_body = json.loads(response['body'].read().decode('utf-8'))
+                    response_text = str(response_body['results'])[:100] + "..."
+                    break
+                except Exception as e:
+                    # Not ready yet, check for key press
+                    key_pressed = check_key_press()
+                    if key_pressed == 'n':
+                        print("\n=== Skipping this request ===")
+                        raise KeyboardInterrupt("User requested to skip")
+                    elif key_pressed == 'p':
+                        # We'll handle 'p' after the request completes
+                        pass
+                    
+                    # Check if we've exceeded our timeout
+                    if time.time() - start_wait > 30:
+                        raise TimeoutError("Request timed out after 30 seconds")
+                    
+                    # Small sleep to prevent CPU spinning
+                    time.sleep(0.1)
     
+    except KeyboardInterrupt as e:
+        error = "User skipped this request"
+        logger.info(f"Skipped {model_id}: {error}")
+        print(f"SKIPPED: {model_id}")
     except Exception as e:
         error = str(e)
         logger.error(f"Error invoking {model_id}: {error}")
@@ -241,7 +349,7 @@ def run_benchmark():
             # Small delay between requests
             time.sleep(1)
             
-            # Check for key presses
+            # Check for key presses again after request completes
             key_pressed = check_key_press()
             
             # If 'n' was pressed, skip to the next model
@@ -250,7 +358,7 @@ def run_benchmark():
                 break
                 
             # If 'p' was pressed, add more iterations
-            elif key_pressed == 'p':
+            elif key_pressed == 'p' or getattr(result, 'p_pressed', False):
                 print("\n=== Adding more test iterations ===")
                 print(f"Current model: {model_id}, Current question: {i+1}")
                 print("How many more iterations of this question do you want to run?")
