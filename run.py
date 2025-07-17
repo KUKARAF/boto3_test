@@ -3,10 +3,6 @@ import time
 import json
 import csv
 import os
-import sys
-import select
-import tty
-import termios
 import random
 from datetime import datetime
 import logging
@@ -29,8 +25,6 @@ bedrock_runtime = boto3.client(
     )
 )
 
-# Global variable to track if 'p' was pressed during a request
-p_pressed_during_request = False
 
 # Models to test
 MODELS = [
@@ -70,7 +64,6 @@ def invoke_model(model_id, prompt):
     
     print(f"Sending request to {model_id}...")
     print(f"Prompt length: {len(prompt)} characters (~{len(prompt)//4} tokens)")
-    print("Waiting for response (press 'n' to skip, 'p' to add iterations)...")
     
     try:
         if "claude" in model_id:
@@ -81,37 +74,12 @@ def invoke_model(model_id, prompt):
                     {"role": "user", "content": prompt}
                 ]
             })
-            # Set up a non-blocking request with timeout checking
-            future = bedrock_runtime.invoke_model(
+            response = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            
-            # Check for key presses while waiting for response
-            start_wait = time.time()
-            while True:
-                # Check if response is ready
-                try:
-                    response = future
-                    response_body = json.loads(response['body'].read().decode('utf-8'))
-                    response_text = response_body['content'][0]['text']
-                    break
-                except Exception as e:
-                    # Not ready yet, check for key press
-                    key_pressed = check_key_press()
-                    if key_pressed == 'n':
-                        print("\n=== Skipping this request ===")
-                        raise KeyboardInterrupt("User requested to skip")
-                    elif key_pressed == 'p':
-                        # We'll handle 'p' after the request completes
-                        pass
-                    
-                    # Check if we've exceeded our timeout
-                    if time.time() - start_wait > 30:
-                        raise TimeoutError("Request timed out after 30 seconds")
-                    
-                    # Small sleep to prevent CPU spinning
-                    time.sleep(0.1)
+            response_body = json.loads(response['body'].read().decode('utf-8'))
+            response_text = response_body['content'][0]['text']
             
         elif "nova" in model_id:
             body = json.dumps({
@@ -120,73 +88,23 @@ def invoke_model(model_id, prompt):
                 ]
                 # Nova doesn't accept max_tokens parameter
             })
-            # Set up a non-blocking request with timeout checking
-            future = bedrock_runtime.invoke_model(
+            response = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            
-            # Check for key presses while waiting for response
-            start_wait = time.time()
-            while True:
-                # Check if response is ready
-                try:
-                    response = future
-                    response_body = json.loads(response['body'].read().decode('utf-8'))
-                    response_text = response_body['output']
-                    break
-                except Exception as e:
-                    # Not ready yet, check for key press
-                    key_pressed = check_key_press()
-                    if key_pressed == 'n':
-                        print("\n=== Skipping this request ===")
-                        raise KeyboardInterrupt("User requested to skip")
-                    elif key_pressed == 'p':
-                        # We'll handle 'p' after the request completes
-                        pass
-                    
-                    # Check if we've exceeded our timeout
-                    if time.time() - start_wait > 30:
-                        raise TimeoutError("Request timed out after 30 seconds")
-                    
-                    # Small sleep to prevent CPU spinning
-                    time.sleep(0.1)
+            response_body = json.loads(response['body'].read().decode('utf-8'))
+            response_text = response_body['output']
             
         elif "titan-embed" in model_id:
             body = json.dumps({
                 "inputText": prompt
             })
-            # Set up a non-blocking request with timeout checking
-            future = bedrock_runtime.invoke_model(
+            response = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            
-            # Check for key presses while waiting for response
-            start_wait = time.time()
-            while True:
-                # Check if response is ready
-                try:
-                    response = future
-                    response_body = json.loads(response['body'].read().decode('utf-8'))
-                    response_text = str(response_body['embedding'])[:100] + "..."  # Just show part of embedding
-                    break
-                except Exception as e:
-                    # Not ready yet, check for key press
-                    key_pressed = check_key_press()
-                    if key_pressed == 'n':
-                        print("\n=== Skipping this request ===")
-                        raise KeyboardInterrupt("User requested to skip")
-                    elif key_pressed == 'p':
-                        # We'll handle 'p' after the request completes
-                        pass
-                    
-                    # Check if we've exceeded our timeout
-                    if time.time() - start_wait > 30:
-                        raise TimeoutError("Request timed out after 30 seconds")
-                    
-                    # Small sleep to prevent CPU spinning
-                    time.sleep(0.1)
+            response_body = json.loads(response['body'].read().decode('utf-8'))
+            response_text = str(response_body['embedding'])[:100] + "..."  # Just show part of embedding
             
         elif "rerank" in model_id:
             # Get random chunks from bible.txt for documents
@@ -207,42 +125,13 @@ def invoke_model(model_id, prompt):
                 "query": prompt,
                 "top_n": 3
             })
-            # Set up a non-blocking request with timeout checking
-            future = bedrock_runtime.invoke_model(
+            response = bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body
             )
-            
-            # Check for key presses while waiting for response
-            start_wait = time.time()
-            while True:
-                # Check if response is ready
-                try:
-                    response = future
-                    response_body = json.loads(response['body'].read().decode('utf-8'))
-                    response_text = str(response_body['results'])[:100] + "..."
-                    break
-                except Exception as e:
-                    # Not ready yet, check for key press
-                    key_pressed = check_key_press()
-                    if key_pressed == 'n':
-                        print("\n=== Skipping this request ===")
-                        raise KeyboardInterrupt("User requested to skip")
-                    elif key_pressed == 'p':
-                        # We'll handle 'p' after the request completes
-                        pass
-                    
-                    # Check if we've exceeded our timeout
-                    if time.time() - start_wait > 30:
-                        raise TimeoutError("Request timed out after 30 seconds")
-                    
-                    # Small sleep to prevent CPU spinning
-                    time.sleep(0.1)
+            response_body = json.loads(response['body'].read().decode('utf-8'))
+            response_text = str(response_body['results'])[:100] + "..."
     
-    except KeyboardInterrupt as e:
-        error = "User skipped this request"
-        logger.info(f"Skipped {model_id}: {error}")
-        print(f"SKIPPED: {model_id}")
     except Exception as e:
         error = str(e)
         logger.error(f"Error invoking {model_id}: {error}")
@@ -259,31 +148,33 @@ def invoke_model(model_id, prompt):
         "output_tokens": count_tokens(response_text) if response_text else 0
     }
 
-# Function to check for key presses
-def check_key_press():
-    # Store the terminal settings
-    old_settings = termios.tcgetattr(sys.stdin)
-    try:
-        # Set the terminal to raw mode
-        tty.setraw(sys.stdin.fileno())
-        # Check if there's input ready (non-blocking)
-        if select.select([sys.stdin], [], [], 0)[0]:
-            key = sys.stdin.read(1)
-            # Restore terminal settings
-            termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-            return key
-        return None
-    except Exception as e:
-        print(f"Error checking for keypress: {e}")
-    finally:
-        # Restore terminal settings
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-    return None
+
+# Function to get test iterations for each model
+def get_test_iterations():
+    iterations = {}
+    print("\n=== Benchmark Configuration ===")
+    print("For each model, specify how many times to run each question.")
+    
+    for model_id in MODELS:
+        model_name = model_id.split('.')[1] if '.' in model_id else model_id
+        try:
+            iterations[model_id] = int(input(f"Number of iterations for {model_name} [{model_id}] (default: 1): ") or "1")
+            if iterations[model_id] < 1:
+                print("Using minimum of 1 iteration")
+                iterations[model_id] = 1
+        except ValueError:
+            print("Invalid input. Using default of 1 iteration.")
+            iterations[model_id] = 1
+    
+    return iterations
 
 # Main benchmark function
 def run_benchmark():
     questions = load_questions()
     results = []
+    
+    # Get test iterations for each model
+    model_iterations = get_test_iterations()
     
     # Create results directory if it doesn't exist
     os.makedirs("results", exist_ok=True)
@@ -292,121 +183,63 @@ def run_benchmark():
     csv_file = f"results/benchmark_{timestamp}.csv"
     
     print("\n=== Benchmark started ===")
-    print("Press 'p' at any time to add more test iterations")
-    print("Press 'n' at any time to skip to the next model")
     
     # Write CSV header
     with open(csv_file, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([
-            "model_id", "question_id", "duration", "input_tokens", 
+            "model_id", "question_id", "iteration", "duration", "input_tokens", 
             "output_tokens", "total_tokens", "tokens_per_minute", "success"
         ])
     
     # Run benchmark for each model and question
     for model_id in MODELS:
-        logger.info(f"Testing model: {model_id}")
+        iterations = model_iterations[model_id]
+        logger.info(f"Testing model: {model_id} with {iterations} iterations per question")
         model_results = []
         
         for i, question in enumerate(questions):
             logger.info(f"  Question {i+1}/{len(questions)}")
             
-            result = invoke_model(model_id, question)
-            success = result["error"] is None
-            
-            # Calculate total tokens and tokens per minute
-            total_tokens = result["input_tokens"] + result["output_tokens"]
-            tokens_per_minute = (total_tokens / result["duration"]) * 60 if result["duration"] > 0 else 0
-            
-            # Log result
-            logger.info(f"    Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
-            print(f"  Question {i+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
-            print(f"    Tokens sent: {result['input_tokens']}, Tokens received: {result['output_tokens']}")
-            
-            # Error details are already printed in invoke_model function
-            
-            # Save to results list
-            result_row = {
-                "model_id": model_id,
-                "question_id": i+1,
-                "duration": result["duration"],
-                "input_tokens": result["input_tokens"],
-                "output_tokens": result["output_tokens"],
-                "total_tokens": total_tokens,
-                "tokens_per_minute": tokens_per_minute,
-                "success": success
-            }
-            model_results.append(result_row)
-            
-            # Write to CSV
-            with open(csv_file, 'a', newline='') as f:
-                writer = csv.writer(f)
-                writer.writerow([
-                    model_id, i+1, result["duration"], result["input_tokens"],
-                    result["output_tokens"], total_tokens, tokens_per_minute, success
-                ])
-            
-            # Small delay between requests
-            time.sleep(1)
-            
-            # Check for key presses again after request completes
-            key_pressed = check_key_press()
-            
-            # If 'n' was pressed, skip to the next model
-            if key_pressed == 'n':
-                print("\n=== Skipping to next model ===")
-                break
+            for iteration in range(iterations):
+                print(f"\nRunning {model_id} - Question {i+1}/{len(questions)} - Iteration {iteration+1}/{iterations}")
                 
-            # If 'p' was pressed, add more iterations
-            elif key_pressed == 'p' or getattr(result, 'p_pressed', False):
-                print("\n=== Adding more test iterations ===")
-                print(f"Current model: {model_id}, Current question: {i+1}")
-                print("How many more iterations of this question do you want to run?")
-                try:
-                    more_iterations = int(input("Enter number (default: 1): ") or "1")
-                    for j in range(more_iterations):
-                        print(f"\nRunning additional iteration {j+1}/{more_iterations}...")
-                        
-                        # Run the same question again
-                        result = invoke_model(model_id, question)
-                        success = result["error"] is None
-                        
-                        # Calculate total tokens and tokens per minute
-                        total_tokens = result["input_tokens"] + result["output_tokens"]
-                        tokens_per_minute = (total_tokens / result["duration"]) * 60 if result["duration"] > 0 else 0
-                        
-                        # Log result
-                        logger.info(f"    Additional run {j+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
-                        print(f"  Additional run {j+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
-                        print(f"    Tokens sent: {result['input_tokens']}, Tokens received: {result['output_tokens']}")
-                        
-                        # Save to results list
-                        result_row = {
-                            "model_id": model_id,
-                            "question_id": i+1,
-                            "duration": result["duration"],
-                            "input_tokens": result["input_tokens"],
-                            "output_tokens": result["output_tokens"],
-                            "total_tokens": total_tokens,
-                            "tokens_per_minute": tokens_per_minute,
-                            "success": success
-                        }
-                        model_results.append(result_row)
-                        
-                        # Write to CSV
-                        with open(csv_file, 'a', newline='') as f:
-                            writer = csv.writer(f)
-                            writer.writerow([
-                                model_id, i+1, result["duration"], result["input_tokens"],
-                                result["output_tokens"], total_tokens, tokens_per_minute, success
-                            ])
-                        
-                        # Small delay between requests
-                        time.sleep(1)
-                    
-                    print("Additional iterations completed.")
-                except ValueError:
-                    print("Invalid input. Continuing with regular benchmark.")
+                result = invoke_model(model_id, question)
+                success = result["error"] is None
+                
+                # Calculate total tokens and tokens per minute
+                total_tokens = result["input_tokens"] + result["output_tokens"]
+                tokens_per_minute = (total_tokens / result["duration"]) * 60 if result["duration"] > 0 else 0
+                
+                # Log result
+                logger.info(f"    Iteration {iteration+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
+                print(f"  Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
+                print(f"  Tokens sent: {result['input_tokens']}, Tokens received: {result['output_tokens']}")
+                
+                # Save to results list
+                result_row = {
+                    "model_id": model_id,
+                    "question_id": i+1,
+                    "iteration": iteration+1,
+                    "duration": result["duration"],
+                    "input_tokens": result["input_tokens"],
+                    "output_tokens": result["output_tokens"],
+                    "total_tokens": total_tokens,
+                    "tokens_per_minute": tokens_per_minute,
+                    "success": success
+                }
+                model_results.append(result_row)
+                
+                # Write to CSV
+                with open(csv_file, 'a', newline='') as f:
+                    writer = csv.writer(f)
+                    writer.writerow([
+                        model_id, i+1, iteration+1, result["duration"], result["input_tokens"],
+                        result["output_tokens"], total_tokens, tokens_per_minute, success
+                    ])
+                
+                # Small delay between requests
+                time.sleep(1)
         
         # Only add results if we have any (in case we skipped the model)
         if model_results:
@@ -420,6 +253,7 @@ if __name__ == "__main__":
         csv_file, results = run_benchmark()
         print(f"\nBenchmark complete. Results saved to {csv_file}")
         print("Run 'python generate_graph.py' to create visualization of the results.")
-    except KeyboardInterrupt:
-        print("\nBenchmark interrupted by user. Partial results may have been saved.")
+    except Exception as e:
+        print(f"\nBenchmark interrupted: {str(e)}")
+        print("Partial results may have been saved.")
         print("Run 'python generate_graph.py' to create visualization of any saved results.")
