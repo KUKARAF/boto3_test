@@ -110,10 +110,11 @@ def invoke_model(model_id, prompt):
             
         elif "rerank" in model_id:
             body = json.dumps({
+                "api_version": "1",
                 "documents": [
-                    {"text": "Paris is the capital of France"},
-                    {"text": "London is the capital of England"},
-                    {"text": "Berlin is the capital of Germany"}
+                    "Paris is the capital of France",
+                    "London is the capital of England",
+                    "Berlin is the capital of Germany"
                 ],
                 "query": prompt,
                 "top_n": 1
