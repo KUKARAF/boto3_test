@@ -123,7 +123,7 @@ def invoke_model(model_id, prompt):
                 bible_chunks.append(chunk)
             
             body = json.dumps({
-                "api_version": "1",
+                "api_version": 1,  # Changed from string to integer
                 "documents": bible_chunks,
                 "query": prompt,
                 "top_n": 3
