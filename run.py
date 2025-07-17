@@ -184,14 +184,17 @@ def get_benchmark_config():
     # Get iterations for each model
     iterations = {}
     print("\nFor each model, specify how many times to run each question.")
+    print("Enter 0 to skip a model completely.")
     
     for model_id in MODELS:
         model_name = model_id.split('.')[1] if '.' in model_id else model_id
         try:
             iterations[model_id] = int(input(f"Number of iterations for {model_name} [{model_id}] (default: 1): ") or "1")
-            if iterations[model_id] < 1:
-                print("Using minimum of 1 iteration")
+            if iterations[model_id] < 0:
+                print("Invalid value. Using default of 1 iteration.")
                 iterations[model_id] = 1
+            elif iterations[model_id] == 0:
+                print(f"Skipping model: {model_id}")
         except ValueError:
             print("Invalid input. Using default of 1 iteration.")
             iterations[model_id] = 1
@@ -225,6 +228,12 @@ def run_benchmark():
     # Run benchmark for each model and question
     for model_id in MODELS:
         iterations = model_iterations[model_id]
+        
+        # Skip models with 0 iterations
+        if iterations == 0:
+            logger.info(f"Skipping model: {model_id}")
+            continue
+            
         logger.info(f"Testing model: {model_id} with {iterations} iterations per question")
         model_results = []
         
