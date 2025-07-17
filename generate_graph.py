@@ -70,15 +70,40 @@ def generate_graphs():
     plt.tight_layout()
     plt.savefig(f"graphs/response_time_{timestamp}.png")
     
-    # 5. Combined metrics table
+    # 5. Average tokens sent and received by model
+    plt.figure(figsize=(12, 6))
+    tokens_data = df.groupby("model_id").agg({
+        "input_tokens": "mean",
+        "output_tokens": "mean"
+    }).reset_index()
+    
+    tokens_data_melted = pd.melt(tokens_data, 
+                                id_vars=["model_id"],
+                                value_vars=["input_tokens", "output_tokens"],
+                                var_name="Token Type", 
+                                value_name="Average Tokens")
+    
+    sns.barplot(x="model_id", y="Average Tokens", hue="Token Type", data=tokens_data_melted)
+    plt.title("Average Tokens Sent and Received by Model")
+    plt.xlabel("Model")
+    plt.ylabel("Average Tokens")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.savefig(f"graphs/tokens_sent_received_{timestamp}.png")
+    
+    # 6. Combined metrics table
     metrics = df.groupby("model_id").agg({
         "duration": "mean",
+        "input_tokens": "mean",
+        "output_tokens": "mean",
+        "total_tokens": "mean",
         "tokens_per_minute": "mean",
         "invocations_per_minute": "mean",
         "success": lambda x: x.mean() * 100
     }).reset_index()
     
-    metrics.columns = ["Model", "Avg Response Time (s)", "Tokens per Minute", 
+    metrics.columns = ["Model", "Avg Response Time (s)", "Avg Tokens Sent", 
+                      "Avg Tokens Received", "Avg Total Tokens", "Tokens per Minute", 
                       "Invocations per Minute", "Success Rate (%)"]
     
     # Save metrics to CSV

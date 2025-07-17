@@ -139,7 +139,7 @@ def run_benchmark():
         writer = csv.writer(f)
         writer.writerow([
             "model_id", "question_id", "duration", "input_tokens", 
-            "output_tokens", "tokens_per_minute", "success"
+            "output_tokens", "total_tokens", "tokens_per_minute", "success"
         ])
     
     # Run benchmark for each model and question
@@ -153,13 +153,14 @@ def run_benchmark():
             result = invoke_model(model_id, question)
             success = result["error"] is None
             
-            # Calculate tokens per minute
+            # Calculate total tokens and tokens per minute
             total_tokens = result["input_tokens"] + result["output_tokens"]
             tokens_per_minute = (total_tokens / result["duration"]) * 60 if result["duration"] > 0 else 0
             
             # Log result
             logger.info(f"    Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
             print(f"  Question {i+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
+            print(f"    Tokens sent: {result['input_tokens']}, Tokens received: {result['output_tokens']}")
             
             # Save to results list
             result_row = {
@@ -178,7 +179,7 @@ def run_benchmark():
                 writer = csv.writer(f)
                 writer.writerow([
                     model_id, i+1, result["duration"], result["input_tokens"],
-                    result["output_tokens"], tokens_per_minute, success
+                    result["output_tokens"], total_tokens, tokens_per_minute, success
                 ])
             
             # Small delay between requests
