@@ -48,6 +48,8 @@ def invoke_model(model_id, prompt):
     error = None
     response_text = ""
     
+    print(f"Sending request to {model_id}...")
+    
     try:
         if "claude" in model_id:
             body = json.dumps({
@@ -157,6 +159,7 @@ def run_benchmark():
             
             # Log result
             logger.info(f"    Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
+            print(f"  Question {i+1}: Duration: {result['duration']:.2f}s, Tokens/min: {tokens_per_minute:.2f}, Success: {success}")
             
             # Save to results list
             result_row = {
