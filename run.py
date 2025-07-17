@@ -142,8 +142,8 @@ def invoke_model(model_id, prompt):
         "output_tokens": count_tokens(response_text) if response_text else 0
     }
 
-# Function to check if 'p' key was pressed
-def is_p_pressed():
+# Function to check for key presses
+def check_key_press():
     # Store the terminal settings
     old_settings = termios.tcgetattr(sys.stdin)
     try:
@@ -154,13 +154,14 @@ def is_p_pressed():
             key = sys.stdin.read(1)
             # Restore terminal settings
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-            return key == 'p'
+            return key
+        return None
     except Exception as e:
         print(f"Error checking for keypress: {e}")
     finally:
         # Restore terminal settings
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-    return False
+    return None
 
 # Main benchmark function
 def run_benchmark():
@@ -175,6 +176,7 @@ def run_benchmark():
     
     print("\n=== Benchmark started ===")
     print("Press 'p' at any time to add more test iterations")
+    print("Press 'n' at any time to skip to the next model")
     
     # Write CSV header
     with open(csv_file, 'w', newline='') as f:
@@ -230,8 +232,16 @@ def run_benchmark():
             # Small delay between requests
             time.sleep(1)
             
-            # Check if 'p' was pressed to add more iterations
-            if is_p_pressed():
+            # Check for key presses
+            key_pressed = check_key_press()
+            
+            # If 'n' was pressed, skip to the next model
+            if key_pressed == 'n':
+                print("\n=== Skipping to next model ===")
+                break
+                
+            # If 'p' was pressed, add more iterations
+            elif key_pressed == 'p':
                 print("\n=== Adding more test iterations ===")
                 print(f"Current model: {model_id}, Current question: {i+1}")
                 print("How many more iterations of this question do you want to run?")
@@ -281,7 +291,9 @@ def run_benchmark():
                 except ValueError:
                     print("Invalid input. Continuing with regular benchmark.")
         
-        results.extend(model_results)
+        # Only add results if we have any (in case we skipped the model)
+        if model_results:
+            results.extend(model_results)
     
     logger.info(f"Benchmark complete. Results saved to {csv_file}")
     return csv_file, results
