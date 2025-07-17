@@ -86,7 +86,7 @@ def invoke_model(model_id, prompt):
         elif "nova" in model_id:
             body = json.dumps({
                 "messages": [
-                    {"role": "user", "content": prompt}
+                    {"role": "user", "content": [{"text": prompt}]}
                 ]
                 # Nova doesn't accept max_tokens parameter
             })
