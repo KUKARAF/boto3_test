@@ -17,7 +17,7 @@ logger = logging.getLogger('model_benchmark')
 # Initialize Bedrock client with no retries and 30 second timeout
 bedrock_runtime = boto3.client(
     'bedrock-runtime',
-    config=boto3.config.Config(
+    config=boto3.session.Config(
         connect_timeout=30,
         read_timeout=30,
         retries={'max_attempts': 0}
