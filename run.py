@@ -15,15 +15,20 @@ logging.basicConfig(
 )
 logger = logging.getLogger('model_benchmark')
 
-# Initialize Bedrock client with no retries and 30 second timeout
-bedrock_runtime = boto3.client(
-    'bedrock-runtime',
-    config=boto3.session.Config(
-        connect_timeout=30,
-        read_timeout=30,
-        retries={'max_attempts': 0}
+# Global timeout setting (will be set by user input)
+MAX_TIMEOUT = 30
+
+# Initialize Bedrock client with no retries and user-defined timeout
+def initialize_bedrock_client(timeout=30):
+    global bedrock_runtime
+    bedrock_runtime = boto3.client(
+        'bedrock-runtime',
+        config=boto3.session.Config(
+            connect_timeout=timeout,
+            read_timeout=timeout,
+            retries={'max_attempts': 0}
+        )
     )
-)
 
 
 # Models to test
@@ -140,6 +145,11 @@ def invoke_model(model_id, prompt):
     end_time = time.time()
     duration = end_time - start_time
     
+    # Log if the request timed out
+    if duration >= MAX_TIMEOUT:
+        logger.warning(f"Request to {model_id} reached timeout limit of {MAX_TIMEOUT}s")
+        print(f"WARNING: Request reached timeout limit of {MAX_TIMEOUT}s")
+    
     return {
         "duration": duration,
         "error": error,
@@ -149,11 +159,31 @@ def invoke_model(model_id, prompt):
     }
 
 
-# Function to get test iterations for each model
-def get_test_iterations():
-    iterations = {}
+# Function to get benchmark configuration
+def get_benchmark_config():
+    global MAX_TIMEOUT
+    
     print("\n=== Benchmark Configuration ===")
-    print("For each model, specify how many times to run each question.")
+    
+    # Get timeout setting
+    try:
+        timeout_input = input(f"Maximum timeout in seconds (default: 30): ")
+        if timeout_input.strip():
+            MAX_TIMEOUT = int(timeout_input)
+            if MAX_TIMEOUT < 1:
+                print("Using minimum timeout of 1 second")
+                MAX_TIMEOUT = 1
+        print(f"Using timeout: {MAX_TIMEOUT} seconds")
+    except ValueError:
+        print("Invalid input. Using default timeout of 30 seconds.")
+        MAX_TIMEOUT = 30
+    
+    # Initialize Bedrock client with the specified timeout
+    initialize_bedrock_client(MAX_TIMEOUT)
+    
+    # Get iterations for each model
+    iterations = {}
+    print("\nFor each model, specify how many times to run each question.")
     
     for model_id in MODELS:
         model_name = model_id.split('.')[1] if '.' in model_id else model_id
@@ -173,8 +203,8 @@ def run_benchmark():
     questions = load_questions()
     results = []
     
-    # Get test iterations for each model
-    model_iterations = get_test_iterations()
+    # Get benchmark configuration
+    model_iterations = get_benchmark_config()
     
     # Create results directory if it doesn't exist
     os.makedirs("results", exist_ok=True)

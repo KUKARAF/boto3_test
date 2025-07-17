@@ -130,7 +130,7 @@ def generate_graphs():
     
     # 6. Combined metrics table
     metrics = df.groupby("model_id").agg({
-        "duration": "mean",
+        "duration": ["mean", "min", "max", "std"],
         "input_tokens": "mean",
         "output_tokens": "mean",
         "total_tokens": "mean",
@@ -139,9 +139,14 @@ def generate_graphs():
         "success": lambda x: x.mean() * 100
     }).reset_index()
     
-    metrics.columns = ["Model", "Avg Response Time (s)", "Avg Tokens Sent", 
-                      "Avg Tokens Received", "Avg Total Tokens", "Tokens per Minute", 
-                      "Invocations per Minute", "Success Rate (%)"]
+    # Flatten the multi-level column names
+    metrics.columns = [
+        "Model", 
+        "Avg Response Time (s)", "Min Response Time (s)", 
+        "Max Response Time (s)", "Std Response Time (s)",
+        "Avg Tokens Sent", "Avg Tokens Received", "Avg Total Tokens", 
+        "Tokens per Minute", "Invocations per Minute", "Success Rate (%)"
+    ]
     
     # Save metrics to CSV
     metrics.to_csv(f"results/metrics_summary_{timestamp}.csv", index=False)
