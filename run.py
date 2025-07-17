@@ -7,6 +7,7 @@ import sys
 import select
 import tty
 import termios
+import random
 from datetime import datetime
 import logging
 
@@ -109,15 +110,23 @@ def invoke_model(model_id, prompt):
             response_text = str(response_body['embedding'])[:100] + "..."  # Just show part of embedding
             
         elif "rerank" in model_id:
+            # Get random chunks from bible.txt for documents
+            with open('bible.txt', 'r') as f:
+                bible_text = f.read()
+            
+            # Create 5 random chunks of approximately 1000 characters each
+            bible_chunks = []
+            bible_length = len(bible_text)
+            for _ in range(5):
+                start_idx = random.randint(0, bible_length - 1000)
+                chunk = bible_text[start_idx:start_idx + 1000].replace('\n', ' ').strip()
+                bible_chunks.append(chunk)
+            
             body = json.dumps({
                 "api_version": "1",
-                "documents": [
-                    "Paris is the capital of France",
-                    "London is the capital of England",
-                    "Berlin is the capital of Germany"
-                ],
+                "documents": bible_chunks,
                 "query": prompt,
-                "top_n": 1
+                "top_n": 3
             })
             response = bedrock_runtime.invoke_model(
                 modelId=model_id,
