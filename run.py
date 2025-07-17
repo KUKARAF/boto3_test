@@ -32,10 +32,26 @@ MODELS = [
     "cohere.rerank-v3-5:0"
 ]
 
-# Load questions
+# Load questions and bible text
 def load_questions():
     with open('questions.txt', 'r') as f:
-        return [line.strip() for line in f if line.strip()]
+        questions = [line.strip() for line in f if line.strip()]
+    
+    # Load bible text to add to each request (approximately 6k tokens)
+    try:
+        with open('bible.txt', 'r') as f:
+            bible_text = f.read(24000)  # ~6k tokens (4 chars per token)
+            print(f"Loaded {len(bible_text)} characters (~{len(bible_text)//4} tokens) from bible.txt")
+    except FileNotFoundError:
+        print("WARNING: bible.txt not found. Using empty padding text.")
+        bible_text = ""
+    
+    # Add bible text to each question
+    padded_questions = []
+    for q in questions:
+        padded_questions.append(f"{q}\n\nFor reference, here is some additional context:\n\n{bible_text}")
+    
+    return padded_questions
 
 # Function to count tokens (simple approximation)
 def count_tokens(text):

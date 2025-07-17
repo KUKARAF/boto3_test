@@ -71,25 +71,62 @@ def generate_graphs():
     plt.savefig(f"graphs/response_time_{timestamp}.png")
     
     # 5. Average tokens sent and received by model
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(14, 8))
     tokens_data = df.groupby("model_id").agg({
         "input_tokens": "mean",
-        "output_tokens": "mean"
+        "output_tokens": "mean",
+        "total_tokens": "mean"
     }).reset_index()
     
-    tokens_data_melted = pd.melt(tokens_data, 
-                                id_vars=["model_id"],
-                                value_vars=["input_tokens", "output_tokens"],
-                                var_name="Token Type", 
-                                value_name="Average Tokens")
+    # Create a stacked bar chart for input and output tokens
+    ax = tokens_data.plot(
+        x="model_id", 
+        y=["input_tokens", "output_tokens"],
+        kind="bar", 
+        stacked=True,
+        figsize=(14, 8),
+        color=["#3498db", "#2ecc71"]
+    )
     
-    sns.barplot(x="model_id", y="Average Tokens", hue="Token Type", data=tokens_data_melted)
-    plt.title("Average Tokens Sent and Received by Model")
-    plt.xlabel("Model")
-    plt.ylabel("Average Tokens")
+    # Add total tokens as text on top of each bar
+    for i, row in enumerate(tokens_data.itertuples()):
+        ax.text(
+            i, 
+            row.total_tokens + 100,  # Position text slightly above the bar
+            f"Total: {int(row.total_tokens)}",
+            ha="center",
+            fontweight="bold"
+        )
+    
+    plt.title("Average Tokens by Model (Input vs Output)", fontsize=16)
+    plt.xlabel("Model", fontsize=14)
+    plt.ylabel("Average Tokens", fontsize=14)
     plt.xticks(rotation=45, ha="right")
+    plt.legend(["Input Tokens", "Output Tokens"])
     plt.tight_layout()
     plt.savefig(f"graphs/tokens_sent_received_{timestamp}.png")
+    
+    # 5b. Create a pie chart showing the proportion of input vs output tokens for each model
+    plt.figure(figsize=(16, 10))
+    
+    # Create subplots for each model
+    fig, axes = plt.subplots(1, len(tokens_data), figsize=(16, 6))
+    
+    for i, (ax, row) in enumerate(zip(axes, tokens_data.itertuples())):
+        model_name = row.model_id.split('.')[-1].split('-')[0]  # Extract short model name
+        token_data = [row.input_tokens, row.output_tokens]
+        ax.pie(
+            token_data, 
+            labels=["Input", "Output"],
+            autopct='%1.1f%%',
+            startangle=90,
+            colors=["#3498db", "#2ecc71"]
+        )
+        ax.set_title(f"{model_name}\n({int(row.total_tokens)} tokens)")
+    
+    plt.suptitle("Token Distribution by Model (Input vs Output)", fontsize=16)
+    plt.tight_layout()
+    plt.savefig(f"graphs/token_distribution_pie_{timestamp}.png")
     
     # 6. Combined metrics table
     metrics = df.groupby("model_id").agg({
